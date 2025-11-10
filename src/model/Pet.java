@@ -1,16 +1,16 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Pet {
     private int idPet;
     private String nome;
     private String porte;
     private String especie;
-    private LocalDateTime data_nascimento;
+    private LocalDate data_nascimento;
     private int idUsuario;
 
-    public Pet (String nome, String porte, String especie, LocalDateTime data_nascimento, int idUsuario) {
+    public Pet (String nome, String porte, String especie, LocalDate data_nascimento, int idUsuario) {
         this.nome = nome;
         this.porte = porte;
         this.especie = especie;
@@ -18,7 +18,7 @@ public class Pet {
         this.idUsuario = idUsuario;
     }
 
-    public Pet(int idPet, String nome, String porte, String especie, LocalDateTime data_nascimento, int idUsuario) {
+    public Pet(int idPet, String nome, String porte, String especie, LocalDate data_nascimento, int idUsuario) {
         this(nome, porte, especie, data_nascimento, idUsuario);
         this.idPet = idPet;
     }
@@ -55,11 +55,11 @@ public class Pet {
         this.especie = especie;
     }
 
-    public LocalDateTime getData_nascimento() {
+    public LocalDate getData_nascimento() {
         return data_nascimento;
     }
 
-    public void setData_nascimento(LocalDateTime data_nascimento) {
+    public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
