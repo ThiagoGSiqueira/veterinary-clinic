@@ -1,7 +1,9 @@
 import dao.PetDAO;
 import dao.UsuarioDAO;
+import dao.VeterinarioDAO;
 import model.Pet;
 import model.Usuario;
+import model.Veterinario;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -13,23 +15,19 @@ public class Main {
     public static void main(String[] args) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         PetDAO petDAO = new PetDAO();
-
-        Usuario a1 = new Usuario("Admin", "admin@pet.com", "admin", "ADMIN");
-        Usuario u1 = new Usuario("Thiago", "thiago@gmail.com", "thiago123", "Cliente");
-        Usuario u2 = new Usuario("Riane", "riane@gmail.com", "riane123", "Cliente");
-
-        Pet p1 = new Pet("Morgana", "pequeno", "gato", LocalDate.of(2025, 5, 12), 3);
-        Pet p2 = new Pet("Dracula", "pequeno", "gato", LocalDate.of(2025, 5, 12), 3);
-        Pet p3 = new Pet("Meg", "Médio", "Cachorro", LocalDate.of(2020, 3, 12), 2);
-
+        VeterinarioDAO veterinarioDAO = new VeterinarioDAO();
         try {
+            Veterinario veterinario = new Veterinario("Ingryt Gomes", "YYYYSP", "1188888888");
+            int teste = veterinarioDAO.criarVeterinario(veterinario);
+            if (teste >= 1) {
+                System.out.println("Veterinario criado com sucesso!");
+            }
 
-            List<Usuario> usuarios = usuarioDAO.listarUsuarios();
+            List<Veterinario> veterinarios = veterinarioDAO.listarVeterinarios();
 
-            for (Usuario u : usuarios) {
-                u.setPets(petDAO.listarPetsPorDono(u.getIdUsuario()));
-
-                System.out.println(u);
+            for (Veterinario vet : veterinarios) {
+                System.out.println(vet.getNome());
+                System.out.println(vet.getCrmv());
             }
 
         } catch (SQLException e) {
