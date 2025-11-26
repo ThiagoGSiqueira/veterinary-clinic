@@ -1,6 +1,5 @@
 package controller;
 
-import dto.AutenticaDTO;
 import dto.CriarContaUsuarioDTO;
 import dto.CriarVeterinarioDTO;
 import enums.MenuOpcao;
@@ -12,12 +11,13 @@ import view.CriarContaView;
 import view.MenuInicialView;
 
 import java.sql.SQLException;
-import java.util.Locale;
 
 public class MenuInicialController {
+
     public void inicia() throws SQLException {
         Usuario usuarioLogado = null;
         MenuInicialView menu = new MenuInicialView();
+        NavegacaoController navegacaoController = new NavegacaoController();
 
         MenuOpcao opcao = menu.exibeMenu();
 
@@ -27,6 +27,9 @@ public class MenuInicialController {
                 AutenticaView autenticaView = new AutenticaView();
                 usuarioLogado = autenticaService.autenticar(autenticaView.autenticaMenu());
                 autenticaView.usuarioLogado(usuarioLogado);
+
+                navegacaoController.encaminharParaMenuPorCargo(usuarioLogado);
+
                 break;
             case MenuOpcao.CRIAR_CONTA:
                 CriarContaView criarContaView = new CriarContaView();
@@ -39,6 +42,7 @@ public class MenuInicialController {
                 CriarContaService criarContaService = new CriarContaService();
                 usuarioLogado = criarContaService.criarConta(usuarioDTO, vetDTO);
                 criarContaView.contaCriada(usuarioLogado);
+                navegacaoController.encaminharParaMenuPorCargo(usuarioLogado);
                 break;
             case MenuOpcao.SAIR:
                 return;

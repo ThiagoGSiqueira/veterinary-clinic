@@ -14,7 +14,15 @@ public class CriarContaService {
     public Usuario criarConta(CriarContaUsuarioDTO usuarioDTO, CriarVeterinarioDTO vetDTO) throws SQLException {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         VeterinarioDAO veterinarioDAO = new VeterinarioDAO();
-        int idUsuario = usuarioDAO.criarUsuario(new Usuario(usuarioDTO.getNome(), usuarioDTO.getEmail(), usuarioDTO.getSenha(), usuarioDTO.getCargo()));
+
+        Usuario usuario = new Usuario(
+                usuarioDTO.getNome(),
+                usuarioDTO.getEmail(),
+                usuarioDTO.getSenha(),
+                usuarioDTO.getCargo()
+        );
+
+        int idUsuario = usuarioDAO.criarUsuario(usuario);
 
         if (vetDTO != null) {
             Veterinario veterinario = new Veterinario(vetDTO.getCrmv(), vetDTO.getNumero(), idUsuario);
