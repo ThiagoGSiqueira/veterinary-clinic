@@ -1,12 +1,14 @@
 package dto;
 
+import enums.Cargo;
+
 public class CriarContaUsuarioDTO {
     private String nome;
     private String email;
     private String senha;
-    private String cargo;
+    private Cargo cargo;
 
-    public CriarContaUsuarioDTO(String nome, String email, String senha, String cargo) {
+    public CriarContaUsuarioDTO(String nome, String email, String senha, Cargo cargo) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -25,7 +27,7 @@ public class CriarContaUsuarioDTO {
         return senha;
     }
 
-    public String getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 

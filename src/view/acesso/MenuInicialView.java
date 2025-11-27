@@ -1,4 +1,4 @@
-package view;
+package view.menu_inicial;
 
 import enums.MenuOpcao;
 

@@ -1,7 +1,7 @@
-package controller;
+package controller.menu_usuarios;
 
 import model.Usuario;
-import view.MenuVeterinarioView;
+import view.menu.MenuVeterinarioView;
 
 public class MenuVeterinarioController {
     public void inicia(Usuario usuario) {

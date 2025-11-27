@@ -1,8 +1,6 @@
-package controller;
+package controller.menu_usuarios;
 
 import model.Usuario;
-import service.AdminService;
-import view.MenuAdminView;
 
 import java.sql.SQLException;
 

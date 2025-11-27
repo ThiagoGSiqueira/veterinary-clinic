@@ -1,4 +1,4 @@
-package view;
+package view.menu_usuarios;
 
 public class MenuVeterinarioView {
     public void exibeMenuVeterinario() {

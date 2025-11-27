@@ -1,4 +1,4 @@
-package view;
+package view.menu_usuarios;
 
 import java.util.Scanner;
 

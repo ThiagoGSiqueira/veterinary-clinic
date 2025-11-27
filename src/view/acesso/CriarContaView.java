@@ -1,7 +1,8 @@
-package view;
+package view.menu_acesso;
 
 import dto.CriarContaUsuarioDTO;
 import dto.CriarVeterinarioDTO;
+import enums.Cargo;
 import model.Usuario;
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class CriarContaView {
         System.out.print("Digite seu cargo (Cliente, Veterinario, Admin): ");
         String cargo = sc.nextLine();
 
-        return new CriarContaUsuarioDTO(nome, email, senha, cargo);
+        return new CriarContaUsuarioDTO(nome, email, senha, Cargo.fromString(cargo));
     }
 
     public CriarVeterinarioDTO criarContaVeterinario() {

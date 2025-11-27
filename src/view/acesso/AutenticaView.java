@@ -1,4 +1,4 @@
-package view;
+package view.menu_acesso;
 
 import dto.AutenticaDTO;
 import model.Usuario;
