@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class CreateAccountView {
     Scanner sc = new Scanner(System.in);
+
     public CreateUserAccountDTO createAccountUser() {
         System.out.print("Digite seu nome: ");
         String name = sc.nextLine();
@@ -16,10 +17,11 @@ public class CreateAccountView {
         String email = sc.nextLine();
         System.out.print("Digite sua senha: ");
         String password = sc.nextLine();
-        System.out.print("Digite seu cargo (Cliente, Veterinario, Admin): ");
-        String role = sc.nextLine();
+        System.out.print("Digite seu cargo (1 - Cliente, 2 - Veterinario, 3 - Admin): ");
+        int roleOption = sc.nextInt();
+        sc.nextLine();
 
-        return new CreateUserAccountDTO(name, email, password, Role.fromString(role));
+        return new CreateUserAccountDTO(name, email, password, Role.fromOption(roleOption));
     }
 
     public CreateVeterinarianAccountDTO createAccountVeterinarian() {
@@ -31,7 +33,7 @@ public class CreateAccountView {
         return new CreateVeterinarianAccountDTO(crmv, numero, null);
     }
 
-    public void showLoginSucess (User user) {
+    public void showLoginSucess(User user) {
         System.out.println("Sua conta foi criada!");
         System.out.println("Seja bem vindo - " + user.getName() + "!");
     }
