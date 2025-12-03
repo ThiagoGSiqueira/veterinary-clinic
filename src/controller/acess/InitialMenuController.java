@@ -4,7 +4,7 @@ import controller.navigation.NavigationController;
 import dto.access.CreateUserAccountDTO;
 import dto.access.CreateVeterinarianAccountDTO;
 import enums.domain.Role;
-import enums.menu.MenuOption;
+import enums.menu.access.MenuOption;
 import model.User;
 import service.access.AuthenticationService;
 import service.access.CreateAccountService;

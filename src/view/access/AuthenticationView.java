@@ -19,9 +19,7 @@ public class AuthenticationView {
     }
 
     public void showAuthenticateSucess(User usuario) {
-        if (usuario != null) {
-            System.out.println(usuario.getName() + ", seja bem-vindo!");
-        } else {
+        if (usuario == null) {
             System.out.println("Usuário não encontrado.");
         }
     }

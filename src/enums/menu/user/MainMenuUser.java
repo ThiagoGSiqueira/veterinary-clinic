@@ -1,4 +1,4 @@
-package enums.menu;
+package enums.menu.user;
 
 public enum MainMenuUser {
     MANAGE_ACCOUNT,

@@ -1,8 +1,8 @@
 package controller.navigation;
 
-import controller.management.AdminMenuController;
-import controller.management.UserMenuController;
-import controller.management.VeterinarianMenuController;
+import controller.admin.AdminMenuController;
+import controller.user.UserMenuController;
+import controller.veterinarian.VeterinarianMenuController;
 import enums.domain.Role;
 import model.User;
 

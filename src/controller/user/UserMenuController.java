@@ -1,27 +1,40 @@
-package controller.management;
+package controller.user;
 
-import enums.menu.MainMenuUser;
+import controller.user.account.AccountManagementController;
+import controller.user.consultation.ConsultationManagementController;
+import controller.user.pet.PetManagementController;
+import enums.menu.user.MainMenuUser;
 import model.User;
-import view.menu.UserMenuView;
+import view.user.UserMenuView;
 
 import java.sql.SQLException;
 
 public class UserMenuController {
     public void start(User loggedUser) throws SQLException {
-        UserMenuView userMenuView = new UserMenuView();
-        MainMenuUser mainMenuUser = userMenuView.getUserMenuChoice(loggedUser);
+        boolean running = true;
+        while(running) {
+            UserMenuView userMenuView = new UserMenuView();
+            MainMenuUser mainMenuUser = userMenuView.getUserMenuChoice(loggedUser);
 
-        switch (mainMenuUser) {
-            case MainMenuUser.MANAGE_ACCOUNT:
-                System.out.println("Gerenciar conta");
-                break;
-            case MainMenuUser.MANAGE_PET:
-                System.out.println("Gerenciar pet");
-            case MainMenuUser.MANAGE_CONSULTATION:
-                System.out.println("Gerenciar consulta");
-            case MainMenuUser.EXIT:
-                System.out.println("Sair");
+            switch (mainMenuUser) {
+                case MainMenuUser.MANAGE_ACCOUNT:
+                    AccountManagementController accountManagementController = new AccountManagementController();
+                    accountManagementController.start(loggedUser);
+                    break;
+                case MainMenuUser.MANAGE_PET:
+                    PetManagementController petManagementController = new PetManagementController();
+                    petManagementController.start(loggedUser);
+                    break;
+                case MainMenuUser.MANAGE_CONSULTATION:
+                    ConsultationManagementController consultationManagementController = new ConsultationManagementController();
+                    consultationManagementController.start(loggedUser);
+                    break;
+                case MainMenuUser.EXIT:
+                    running = false;
+                    break;
+            }
         }
+
 
     }
 }

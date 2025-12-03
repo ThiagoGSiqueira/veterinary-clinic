@@ -1,4 +1,4 @@
-package view.menu;
+package view.veterinarian;
 
 public class VeterinarianMenuView {
     public void getVeterinarianMenuChoice() {

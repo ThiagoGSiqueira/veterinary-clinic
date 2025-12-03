@@ -1,6 +1,6 @@
 package view.access;
 
-import enums.menu.MenuOption;
+import enums.menu.access.MenuOption;
 
 import java.util.Scanner;
 

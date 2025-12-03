@@ -1,9 +1,8 @@
-package view.menu;
+package view.user;
 
-import enums.menu.MainMenuUser;
+import enums.menu.user.MainMenuUser;
 import model.User;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class UserMenuView {
@@ -24,6 +23,7 @@ public class UserMenuView {
 
         System.out.print("Selecione uma opção: ");
         int option = sc.nextInt();
+        sc.nextLine();
 
         switch (option) {
             case 1:

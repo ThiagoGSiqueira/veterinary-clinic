@@ -1,4 +1,4 @@
-package controller.management;
+package controller.admin;
 
 import model.User;
 

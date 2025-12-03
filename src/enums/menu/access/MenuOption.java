@@ -1,4 +1,4 @@
-package enums.menu;
+package enums.menu.access;
 
 public enum MenuOption {
     AUTHENTICATE,

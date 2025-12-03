@@ -1,4 +1,4 @@
-package controller.management;
+package controller.veterinarian;
 
 import model.User;
 
