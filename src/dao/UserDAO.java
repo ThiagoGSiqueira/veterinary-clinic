@@ -27,7 +27,7 @@ public class UserDAO {
             while (rs.next()) {
                 user.setIdUsuario(rs.getInt(1));
             }
-            return user.getIdUsuario();
+            return user.getIdUser();
         }
     }
 
@@ -109,6 +109,17 @@ public class UserDAO {
         try (Connection conn = DatabaseConnection.getConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, userId);
+            return ps.executeUpdate();
+        }
+    }
+
+    public int updatePasswordById(int UserId, String newPassword) throws SQLException {
+        String sql = "UPDATE user SET password = ? WHERE user_id = ?";
+
+        try (Connection conn = DatabaseConnection.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, newPassword);
+            ps.setInt(2, UserId);
             return ps.executeUpdate();
         }
     }
