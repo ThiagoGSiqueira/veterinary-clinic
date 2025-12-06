@@ -2,6 +2,7 @@ package controller.user.account;
 
 import dto.user.NewPasswordDataDTO;
 import enums.menu.user.AccountOptions;
+import enums.menu.user.FlowStatus;
 import model.User;
 import service.user.AccountService;
 import view.user.AccountMenuView;
@@ -11,7 +12,7 @@ import view.user.DisplayAccountInfo;
 import java.sql.SQLException;
 
 public class AccountManagementController {
-    public void start(User loggedUser) throws SQLException {
+    public FlowStatus start(User loggedUser) throws SQLException {
         boolean running = true;
         while (running) {
             AccountMenuView accountMenuView = new AccountMenuView();
@@ -36,16 +37,13 @@ public class AccountManagementController {
                     } else {
                         changePasswordView.displayCurrentPasswordError();
                     }
-
                     break;
                 case DELETE_ACCOUNT:
-                    //Pensar se vou implementar com soft delete ou não.
-                    System.out.println("Deletar conta");
-                    break;
+                   return FlowStatus.EXIT_SESSION;
                 case BACK:
-                    System.out.println("Voltar pro menu anterior");
                     running = false;
             }
         }
+        return  FlowStatus.CONTINUE;
     }
 }

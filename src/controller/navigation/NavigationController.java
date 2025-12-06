@@ -4,6 +4,7 @@ import controller.admin.AdminMenuController;
 import controller.user.UserMenuController;
 import controller.veterinarian.VeterinarianMenuController;
 import enums.domain.Role;
+import enums.menu.user.FlowStatus;
 import model.User;
 
 import java.sql.SQLException;
@@ -12,7 +13,10 @@ public class NavigationController {
     public void routeToMenuByRole(User loggedUser) throws SQLException {
         if (Role.CLIENT.equals(loggedUser.getRole())) {
             UserMenuController userMenuController = new UserMenuController();
-            userMenuController.start(loggedUser);
+            FlowStatus teste = userMenuController.start(loggedUser);
+            if (teste.equals(FlowStatus.EXIT_SESSION)) {
+                return;
+            }
         } else if  (Role.ADMIN.equals(loggedUser.getRole())) {
             AdminMenuController adminMenuController = new AdminMenuController();
             adminMenuController.start(loggedUser);

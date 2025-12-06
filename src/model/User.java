@@ -11,6 +11,7 @@ public class User {
     private String email;
     private String password;
     private Role role;
+    private int isActive;
     private List<Pet> pets = new ArrayList<>();
 
     public User(String name, String email, String password, Role role) {
@@ -72,5 +73,10 @@ public class User {
     public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
+
+    public int getIsActive() {
+        return isActive;
+    }
+    public void setIsActive(int isActive) {}
 
 }

@@ -17,37 +17,41 @@ import java.sql.SQLException;
 public class InitialMenuController {
 
     public void start() throws SQLException {
-        User loggedUser = null;
-        InitialMenuView menu = new InitialMenuView();
-        NavigationController navigationController = new NavigationController();
+        boolean running = true;
+        while (running) {
+            User loggedUser = null;
+            InitialMenuView menu = new InitialMenuView();
+            NavigationController navigationController = new NavigationController();
 
-        MenuOption option = menu.showMenu();
+            MenuOption option = menu.showMenu();
 
-        switch (option) {
-            case MenuOption.AUTHENTICATE:
-                AuthenticationService authenticationService = new AuthenticationService();
-                AuthenticationView authenticationView = new AuthenticationView();
-                loggedUser = authenticationService.authenticate(authenticationView.authenticateMenu());
-                authenticationView.showAuthenticateSucess(loggedUser);
+            switch (option) {
+                case MenuOption.AUTHENTICATE:
+                    AuthenticationService authenticationService = new AuthenticationService();
+                    AuthenticationView authenticationView = new AuthenticationView();
+                    loggedUser = authenticationService.authenticate(authenticationView.authenticateMenu());
+                    authenticationView.showAuthenticateSucess(loggedUser);
 
-                navigationController.routeToMenuByRole(loggedUser);
+                    navigationController.routeToMenuByRole(loggedUser);
 
-                break;
-            case MenuOption.CREATE_ACCOUNT:
-                CreateAccountView createAccountView = new CreateAccountView();
-                CreateUserAccountDTO userDTO = createAccountView.createAccountUser();
-                CreateVeterinarianAccountDTO veterinarianDTO = null;
-                if (Role.VETERINARIAN.equals(userDTO.getRole())) {
-                    veterinarianDTO = createAccountView.createAccountVeterinarian();
-                }
+                    break;
+                case MenuOption.CREATE_ACCOUNT:
+                    CreateAccountView createAccountView = new CreateAccountView();
+                    CreateUserAccountDTO userDTO = createAccountView.createAccountUser();
+                    CreateVeterinarianAccountDTO veterinarianDTO = null;
+                    if (Role.VETERINARIAN.equals(userDTO.getRole())) {
+                        veterinarianDTO = createAccountView.createAccountVeterinarian();
+                    }
 
-                CreateAccountService createAccountService = new CreateAccountService();
-                loggedUser = createAccountService.createAccount(userDTO, veterinarianDTO);
-                createAccountView.showLoginSucess(loggedUser);
-                navigationController.routeToMenuByRole(loggedUser);
-                break;
-            case MenuOption.EXIT:
-                return;
+                    CreateAccountService createAccountService = new CreateAccountService();
+                    loggedUser = createAccountService.createAccount(userDTO, veterinarianDTO);
+                    createAccountView.showLoginSucess(loggedUser);
+                    navigationController.routeToMenuByRole(loggedUser);
+                    break;
+                case MenuOption.EXIT:
+                    return;
+            }
         }
+
     }
 }

@@ -17,8 +17,19 @@ public class AccountService {
             if (userDAO.updatePasswordById(loggedUser.getIdUser(), newPasswordDataDTO.getNewPassword()) >= 1) {
                 loggedUser.setPassword(newPasswordDataDTO.getNewPassword());
                 return true;
-            };
+            }
+            ;
             return false;
+        }
+        return false;
+    }
+
+
+    public boolean deleteAccount(User loggedUser) throws SQLException {
+        UserDAO userDAO = new UserDAO();
+        if (userDAO.deleteById(loggedUser.getIdUser()) >= 1) {
+            loggedUser.setIsActive(0);
+            return true;
         }
         return false;
     }

@@ -104,7 +104,7 @@ public class UserDAO {
     }
 
     public int deleteById(int userId) throws SQLException {
-        String sql = "DELETE FROM user WHERE user_id = ?";
+        String sql = "UPDATE user SET is_active = 0 WHERE user_id = ?";
 
         try (Connection conn = DatabaseConnection.getConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
